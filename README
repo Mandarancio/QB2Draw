@@ -1,3 +1,5 @@
 A simple qt implementation of b2Draw (the draw class for box2d).
 Released under GPLv3.
 By Martino Giordano Ferrari
+
+For example and reference look at the wiki
