@@ -51,7 +51,7 @@ void QB2Draw::DrawSolidPolygon(const b2Vec2 *vertices, int32 vertexCount, const 
     painter->drawPolygon(pol); //Draw the polygon
 }
 
-void QB2Draw::DrawCircle(const b2Vec2 &center, float32 radius, const b2Color &color){
+void QB2Draw::DrawCircle(const b2Vec2 &center, float radius, const b2Color &color){
     if (painter==NULL) return; //Check the painter
 
     QColor c=toQColor(color); //Convert the color
@@ -60,13 +60,9 @@ void QB2Draw::DrawCircle(const b2Vec2 &center, float32 radius, const b2Color &co
     painter->drawEllipse(toQPoint(center),qRound(radius),qRound(radius)); //draw circonference
 }
 
-void QB2Draw::DrawSolidCircle(const b2Vec2 &center, float32 radius, const b2Vec2 &axis, const b2Color &color){
+void QB2Draw::DrawSolidCircle(const b2Vec2 &center, float radius, const b2Vec2 &axis, const b2Color &color){
     //What is axis??
-    if (painter==NULL) return; //Check the painter
-    QColor c=toQColor(color); //Convert the color
-    painter->setPen(c); //set pen color
-    painter->setBrush(c); //set brush color
-    painter->drawEllipse(toQPoint(center),qRound(radius),qRound(radius)); //Draw circle
+    this->DrawPoint(center, radius, color);
 }
 
 void QB2Draw::DrawSegment(const b2Vec2 &p1, const b2Vec2 &p2, const b2Color &color){
@@ -85,6 +81,15 @@ void QB2Draw::DrawTransform(const b2Transform &xf){
     painter->rotate(xf.q.GetAngle()*180.0/3.141628); //Rotate
 }
 
+void QB2Draw::DrawPoint(const b2Vec2& p, float size, const b2Color& color){
+    if (painter==NULL) return; //Check the painter
+    QColor c=toQColor(color); //Convert the color
+    painter->setPen(c); //set pen color
+    painter->setBrush(c); //set brush color
+    painter->drawEllipse(toQPoint(p),qRound(size),qRound(size)); //Draw circle
+}
+
+
 QColor QB2Draw::toQColor(b2Color color){
     return QColor(color.r,color.g,color.b); //Convert color
 }
@@ -93,3 +98,4 @@ QPoint QB2Draw::toQPoint(b2Vec2 vec){
     QPoint p(-vec.x,vec.y); //Convert in qpoint
     return geometry.center()-p; //change the coordinate system
 }
+

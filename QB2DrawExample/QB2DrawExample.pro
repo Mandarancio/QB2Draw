@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core widgets gui
 
 TARGET = QB2DrawExample
 TEMPLATE = app
@@ -19,4 +19,4 @@ HEADERS  += mainwindow.h \
 
 FORMS    +=
 
-LIBS +=-lBox2D
+LIBS +=-lbox2d

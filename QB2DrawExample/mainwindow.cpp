@@ -64,6 +64,6 @@ void MainWindow::paintEvent(QPaintEvent *e){
     p.setRenderHint(QPainter::Antialiasing);
     draw->setPainter(&p); //Assign the painter at the drawer
     world->Step(1.0/30.0,10,10); //Update world
-    world->DrawDebugData(); //Draw world
+    world->DebugDraw(); //Draw world
     if (p.end()) e->accept(); //Close painter
 }
